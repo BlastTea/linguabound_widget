@@ -7,7 +7,7 @@ import 'package:m_widget/m_widget.dart';
 export 'widgets/widgets.dart';
 
 class LinguaboundWidget {
-  Future<void> initialize() async {
+  static Future<void> initialize() async {
     await MWidget.initialize(
       defaultLanguage: LanguageType.indonesiaIndonesian,
       defaultTheme: ThemeValue(

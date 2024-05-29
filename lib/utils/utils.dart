@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+part 'page_route.dart';
+
 const kFontFamily = 'FeatherBold';
 
 const kColorSurface = Color(0xFF6A2C70);

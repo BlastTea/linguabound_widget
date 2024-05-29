@@ -5,6 +5,7 @@ import 'package:linguabound_widget/utils/utils.dart';
 import 'package:m_widget/m_widget.dart';
 
 export 'widgets/widgets.dart';
+export 'utils/utils.dart';
 
 class LinguaboundWidget {
   static Future<void> initialize() async {

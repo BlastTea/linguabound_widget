@@ -28,8 +28,9 @@ class HomePage extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: MyFilledButton.circle(
+              child: MyFilledButton(
                 onPressed: null,
+                child: const Text('ABC'),
               ),
             ),
           ],

@@ -41,28 +41,29 @@ class _MyFilledButtonState extends State<MyFilledButton> {
       crossAxisAlignment: widget._circle ? CrossAxisAlignment.center : CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (_onPressed) const SizedBox(height: 3.0),
+        if (_onPressed) const SizedBox(height: 4.0),
         Container(
-          width: widget.radius,
-          height: widget.radius,
+          width: widget._circle ? widget.radius : null,
+          height: widget._circle ? widget.radius : null,
           decoration: BoxDecoration(
-            // TODO: Implement color for disabled state when widget.onPressed is null
             color: widget.onPressed == null ? effectiveDisabledColor : kColorPrimary,
             borderRadius: widget._circle ? null : kBorderRadius,
             border: Border(
-              left: BorderSide(
-                color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
-              ),
-              top: BorderSide(
-                color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
-              ),
-              right: BorderSide(
-                color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
-              ),
-              bottom: BorderSide(
-                color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
-                width: _onPressed ? 1.0 : 4.0,
-              ),
+              // left: BorderSide(
+              //   color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
+              // ),
+              // top: BorderSide(
+              //   color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
+              // ),
+              // right: BorderSide(
+              //   color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
+              // ),
+              bottom: _onPressed
+                  ? BorderSide.none
+                  : BorderSide(
+                      color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
+                      width: 4.0,
+                    ),
             ),
             shape: widget._circle ? BoxShape.circle : BoxShape.rectangle,
           ),

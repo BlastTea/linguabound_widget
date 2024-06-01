@@ -154,7 +154,7 @@ class _MyFilledButtonState extends State<MyFilledButton> {
       crossAxisAlignment: widget._circle ? CrossAxisAlignment.center : CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (_onPressed && !widget._circle) SizedBox(height: widget.bottomBorderWidth - widget.pressedBottomBorderWidth),
+        if (_onPressed) SizedBox(height: widget.bottomBorderWidth - widget.pressedBottomBorderWidth),
         Container(
           width: widget._circle ? (widget.radius ?? (widget.padding != null ? null : 48.0)) : widget.width,
           height: widget._circle ? (widget.radius ?? (widget.padding != null ? null : 48.0)) : widget.height,

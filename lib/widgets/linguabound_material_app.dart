@@ -55,7 +55,7 @@ class LinguaboundMaterialApp extends StatelessWidget {
           );
 
           DividerThemeData effectiveDividerTheme = const DividerThemeData(
-            color: kColorBorder,
+            color: kColorDivider,
           );
 
           return MaterialApp(

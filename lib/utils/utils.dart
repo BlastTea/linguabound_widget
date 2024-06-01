@@ -7,9 +7,8 @@ const kFontFamily = 'FeatherBold';
 const kColorSurface = Color(0xFF7F6182);
 const kColorPrimary = Color(0xFFB83B5E);
 const kColorSelected = Color(0xFFD4718D);
-
-/// Color for border in button and divider
 const kColorBorder = Color(0xFFA12A4C);
+const kColorDivider = Color(0xFFF6F6F6);
 const kColorTonalBorder = Color(0xFFDB7E98);
 const kColorTonalBorderSelected = Color(0xFFB74969);
 

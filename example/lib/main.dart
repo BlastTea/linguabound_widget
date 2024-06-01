@@ -16,8 +16,31 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => const LinguaboundMaterialApp(home: HomePage());
 }
 
-class HomePage extends StatelessWidget {
+class Data {
+  Data({
+    required this.label,
+    required this.icon,
+    this.selected = false,
+  });
+
+  final String label;
+  final IconData icon;
+  bool selected;
+}
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<Data> _data = [
+    Data(label: 'Masih Pemula', icon: Icons.signal_cellular_alt_1_bar),
+    Data(label: 'Udah Jago', icon: Icons.signal_cellular_alt_2_bar),
+    Data(label: 'Udah Sepuh', icon: Icons.signal_cellular_alt),
+  ];
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -26,11 +49,36 @@ class HomePage extends StatelessWidget {
         ),
         body: ListView(
           children: [
+            ..._data.map(
+              (e) => Padding(
+                padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+                child: MyFilledButton.tonal(
+                  onPressed: () => setState(() {
+                    for (Data data in _data) {
+                      if (data.label == e.label) {
+                        data.selected = true;
+                        continue;
+                      }
+
+                      data.selected = false;
+                    }
+                  }),
+                  selected: e.selected,
+                  icon: Icon(e.icon),
+                  iconColor: const Color(0xFF1899D6),
+                  child: Text(e.label),
+                ),
+              ),
+            ),
+            const Divider(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: MyFilledButton(
-                onPressed: null,
-                child: const Text('ABC'),
+                onPressed: () {},
+                foregroundColor: Colors.blue,
+                backgroundColor: Colors.yellowAccent,
+                borderColor: Colors.deepOrange,
+                child: const Text('Press Me!'),
               ),
             ),
           ],

@@ -181,10 +181,12 @@ class _MyFilledButtonState extends State<MyFilledButton> {
                       color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
                       width: 2.0,
                     ),
-              bottom: BorderSide(
-                color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
-                width: _onPressed ? widget.pressedBottomBorderWidth : widget.bottomBorderWidth,
-              ),
+              bottom: (_onPressed ? widget.pressedBottomBorderWidth == 0.0 : widget.bottomBorderWidth == 0.0)
+                  ? BorderSide.none
+                  : BorderSide(
+                      color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
+                      width: _onPressed ? widget.pressedBottomBorderWidth : widget.bottomBorderWidth,
+                    ),
             ),
             shape: widget._circle ? BoxShape.circle : BoxShape.rectangle,
           ),

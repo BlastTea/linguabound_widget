@@ -29,6 +29,7 @@ class MyFilledButton extends StatefulWidget {
     this.borderColor,
     this.textStyle,
     this.selectedTextStyle,
+    this.image,
   })  : radius = null,
         selected = false,
         selectedBackgroundColor = null,
@@ -74,6 +75,7 @@ class MyFilledButton extends StatefulWidget {
     this.selectedBorderColor,
     this.textStyle,
     this.selectedTextStyle,
+    this.image,
   })  : radius = null,
         _circle = false,
         _tonal = true;
@@ -105,6 +107,7 @@ class MyFilledButton extends StatefulWidget {
     this.borderColor,
     this.textStyle,
     this.selectedTextStyle,
+    this.image,
   })  : width = null,
         height = null,
         selected = false,
@@ -177,6 +180,8 @@ class MyFilledButton extends StatefulWidget {
   /// The text style of the content inside the button when it is selected.
   final TextStyle? selectedTextStyle;
 
+  final DecorationImage? image;
+
   /// Indicates if the button should be styled as a circle.
   final bool _circle;
 
@@ -224,6 +229,7 @@ class _MyFilledButtonState extends State<MyFilledButton> {
           decoration: BoxDecoration(
             color: widget.onPressed == null ? effectiveDisabledColor : effectiveBackgroundColor,
             borderRadius: widget._circle ? null : kBorderRadius,
+            image: widget.image,
             border: Border(
               left: BorderSide(
                 color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,

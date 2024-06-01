@@ -1,18 +1,6 @@
 part of 'widgets.dart';
 
-/// A customizable filled button widget that can adapt to different styles and shapes.
 class MyFilledButton extends StatefulWidget {
-  /// Creates a default styled filled button.
-  ///
-  /// [onPressed] is the callback that is called when the button is tapped.
-  /// [width] and [height] define the size of the button.
-  /// [iconSize] specifies the size of the [icon].
-  /// [minHorizontalPadding] is the minimum padding on the horizontal axis inside the button.
-  /// [padding] specifies the internal padding of the button.
-  /// [icon] is the widget displayed as an icon on the button.
-  /// [child] is the content displayed inside the button.
-  /// [backgroundColor], [foregroundColor], [iconColor], and [borderColor] define the color properties of the button.
-  /// [textStyle] and [selectedTextStyle] define the text style for the button label.
   const MyFilledButton({
     super.key,
     required this.onPressed,
@@ -20,6 +8,8 @@ class MyFilledButton extends StatefulWidget {
     this.height,
     this.iconSize,
     this.minHorizontalPadding,
+    this.bottomBorderWidth = 6.0,
+    this.pressedBottomBorderWidth = 2.0,
     this.padding,
     this.icon,
     required this.child,
@@ -41,21 +31,6 @@ class MyFilledButton extends StatefulWidget {
         _circle = false,
         _tonal = false;
 
-  /// Creates a tonal style filled button, which adapts its style based on the selection state.
-  ///
-  /// [onPressed] is the callback that is called when the button is tapped.
-  /// [width] and [height] define the size of the button.
-  /// [iconSize] specifies the size of the [icon].
-  /// [minHorizontalPadding] is the minimum padding on the horizontal axis inside the button.
-  /// [padding] specifies the internal padding of the button.
-  /// [icon] is the widget displayed as an icon on the button.
-  /// [child] is the content displayed inside the button.
-  /// [selected] defines the initial selection state of the button.
-  /// [backgroundColor] and [selectedBackgroundColor] define the normal and selected state background colors respectively.
-  /// [foregroundColor] and [selectedForegroundColor] define the normal and selected state foreground colors respectively.
-  /// [iconColor] and [selectedIconColor] define the normal and selected state icon colors respectively.
-  /// [borderColor] and [selectedBorderColor] define the normal and selected state border colors respectively.
-  /// [textStyle] and [selectedTextStyle] define the text style for the button label in normal and selected states respectively.
   const MyFilledButton.tonal({
     super.key,
     required this.onPressed,
@@ -63,6 +38,8 @@ class MyFilledButton extends StatefulWidget {
     this.height,
     this.iconSize,
     this.minHorizontalPadding,
+    this.bottomBorderWidth = 6.0,
+    this.pressedBottomBorderWidth = 2.0,
     this.padding,
     this.icon,
     required this.child,
@@ -84,24 +61,14 @@ class MyFilledButton extends StatefulWidget {
         _circle = false,
         _tonal = true;
 
-  /// Creates a circular styled filled button.
-  ///
-  /// [onPressed] is the callback that is called when the button is tapped.
-  /// [radius] specifies the radius of the circular button.
-  /// [iconSize] specifies the size of the [icon].
-  /// [minHorizontalPadding] is the minimum padding on the horizontal axis inside the button.
-  /// [icon] is the widget displayed as an icon on the button.
-  /// [child] is the content displayed inside the button.
-  /// [padding] specifies the internal padding of the button.
-  /// [backgroundColor] and [foregroundColor] define the color properties of the button.
-  /// [iconColor] and [borderColor] define the color of the icon and the border of the button respectively.
-  /// [textStyle] and [selectedTextStyle] define the text style for the button label.
   const MyFilledButton.circle({
     super.key,
     required this.onPressed,
     this.radius,
     this.iconSize,
     this.minHorizontalPadding,
+    this.bottomBorderWidth = 6.0,
+    this.pressedBottomBorderWidth = 2.0,
     this.icon,
     this.child,
     this.bottomBorderOnly = false,
@@ -124,78 +91,33 @@ class MyFilledButton extends StatefulWidget {
         _circle = true,
         _tonal = false;
 
-  /// The callback that is triggered when the button is tapped.
   final VoidCallback? onPressed;
-
-  /// The width of the button.
   final double? width;
-
-  /// The height of the button.
   final double? height;
-
-  /// The size of the icon inside the button, if any.
   final double? iconSize;
-
-  /// The border radius for circular buttons.
   final double? radius;
-
-  /// The minimum horizontal padding inside the button.
   final double? minHorizontalPadding;
-
-  /// The padding inside the button.
+  final double bottomBorderWidth;
+  final double pressedBottomBorderWidth;
   final EdgeInsetsGeometry? padding;
-
-  /// The icon widget to display in the button.
   final Widget? icon;
-
-  /// The main content of the button.
   final Widget? child;
-
-  /// Indicates if the button is selected.
-  ///
-  /// This property influences the styling of the button when the tonal constructor is used.
   final bool selected;
-
   final bool bottomBorderOnly;
-
-  /// The background color of the button.
   final Color? backgroundColor;
-
-  /// The background color of the button when it is selected.
   final Color? selectedBackgroundColor;
-
-  /// The foreground color of the text and icon in the button.
   final Color? foregroundColor;
-
-  /// The foreground color when the button is selected.
   final Color? selectedForegroundColor;
-
-  /// The color of the icon in the button.
   final Color? iconColor;
-
-  /// The color of the icon when the button is selected.
   final Color? selectedIconColor;
-
-  /// The color of the button's border.
   final Color? borderColor;
-
-  /// The color of the button's border when it is selected.
   final Color? selectedBorderColor;
-
-  /// The text style of the content inside the button.
   final TextStyle? textStyle;
-
-  /// The text style of the content inside the button when it is selected.
   final TextStyle? selectedTextStyle;
-
   final DecorationImage? image;
-
   final BorderRadiusGeometry? borderRadius;
 
-  /// Indicates if the button should be styled as a circle.
   final bool _circle;
-
-  /// Indicates if the button is using a tonal style.
   final bool _tonal;
 
   @override
@@ -232,7 +154,7 @@ class _MyFilledButtonState extends State<MyFilledButton> {
       crossAxisAlignment: widget._circle ? CrossAxisAlignment.center : CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (_onPressed) const SizedBox(height: 4.0),
+        if (_onPressed) SizedBox(height: widget.bottomBorderWidth - widget.pressedBottomBorderWidth),
         Container(
           width: widget._circle ? (widget.radius ?? (widget.padding != null ? null : 48.0)) : widget.width,
           height: widget._circle ? (widget.radius ?? (widget.padding != null ? null : 48.0)) : widget.height,
@@ -261,7 +183,7 @@ class _MyFilledButtonState extends State<MyFilledButton> {
                     ),
               bottom: BorderSide(
                 color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
-                width: _onPressed ? 2.0 : 6.0,
+                width: _onPressed ? widget.pressedBottomBorderWidth : widget.bottomBorderWidth,
               ),
             ),
             shape: widget._circle ? BoxShape.circle : BoxShape.rectangle,

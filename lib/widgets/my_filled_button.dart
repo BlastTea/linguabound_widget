@@ -256,7 +256,7 @@ class _MyFilledButtonState extends State<MyFilledButton> {
                 onTapUp: (details) => setState(() => _onPressed = false),
                 onTapCancel: () => setState(() => _onPressed = false),
                 child: Padding(
-                  padding: widget.padding ?? (widget._tonal ? const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0) : const EdgeInsets.symmetric(vertical: 16.0)),
+                  padding: widget.padding ?? (widget._tonal ? const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0) : const EdgeInsets.symmetric(vertical: 4.0)),
                   child: Row(
                     mainAxisAlignment: widget.icon != null ? MainAxisAlignment.start : MainAxisAlignment.center,
                     children: [

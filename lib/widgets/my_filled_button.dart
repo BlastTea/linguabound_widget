@@ -23,6 +23,7 @@ class MyFilledButton extends StatefulWidget {
     this.padding,
     this.icon,
     required this.child,
+    this.bottomBorderOnly = false,
     this.backgroundColor,
     this.foregroundColor,
     this.iconColor,
@@ -66,6 +67,7 @@ class MyFilledButton extends StatefulWidget {
     this.icon,
     required this.child,
     this.selected = false,
+    this.bottomBorderOnly = false,
     this.backgroundColor,
     this.selectedBackgroundColor,
     this.foregroundColor,
@@ -102,6 +104,7 @@ class MyFilledButton extends StatefulWidget {
     this.minHorizontalPadding,
     this.icon,
     this.child,
+    this.bottomBorderOnly = false,
     this.padding,
     this.backgroundColor,
     this.foregroundColor,
@@ -152,6 +155,8 @@ class MyFilledButton extends StatefulWidget {
   ///
   /// This property influences the styling of the button when the tonal constructor is used.
   final bool selected;
+
+  final bool bottomBorderOnly;
 
   /// The background color of the button.
   final Color? backgroundColor;
@@ -236,18 +241,24 @@ class _MyFilledButtonState extends State<MyFilledButton> {
             borderRadius: widget.borderRadius ?? (widget._circle ? null : kBorderRadius),
             image: widget.image,
             border: Border(
-              left: BorderSide(
-                color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
-                width: 2.0,
-              ),
-              top: BorderSide(
-                color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
-                width: 2.0,
-              ),
-              right: BorderSide(
-                color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
-                width: 2.0,
-              ),
+              left: widget.bottomBorderOnly
+                  ? BorderSide.none
+                  : BorderSide(
+                      color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
+                      width: 2.0,
+                    ),
+              top: widget.bottomBorderOnly
+                  ? BorderSide.none
+                  : BorderSide(
+                      color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
+                      width: 2.0,
+                    ),
+              right: widget.bottomBorderOnly
+                  ? BorderSide.none
+                  : BorderSide(
+                      color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
+                      width: 2.0,
+                    ),
               bottom: BorderSide(
                 color: widget.onPressed == null ? effectiveDisabledColor : effectiveBorderColor,
                 width: _onPressed ? 2.0 : 6.0,

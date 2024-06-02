@@ -4,9 +4,11 @@ class LinguaboundMaterialApp extends StatelessWidget {
   const LinguaboundMaterialApp({
     super.key,
     this.home,
+    this.title = '',
   });
 
   final Widget? home;
+  final String title;
 
   @override
   Widget build(BuildContext context) => MWidgetDynamicColorBuilder(
@@ -59,6 +61,7 @@ class LinguaboundMaterialApp extends StatelessWidget {
           );
 
           return MaterialApp(
+            title: title,
             theme: theme.copyWith(
               colorScheme: effectiveColorScheme,
               scaffoldBackgroundColor: effectiveColorScheme.surface,

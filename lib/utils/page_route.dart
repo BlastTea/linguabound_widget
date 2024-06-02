@@ -43,9 +43,9 @@ class SlidePageRoute<T> extends PageRoute<T> {
 
   @override
   Widget buildTransitions(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) => FadeTransition(
-        opacity: animation.drive(Tween(begin: 0.5, end: 1.0)).drive(CurveTween(curve: Curves.fastEaseInToSlowEaseOut)),
+        opacity: animation.drive(Tween(begin: 0.5, end: 1.0)).drive(CurveTween(curve: Curves.easeInOut)),
         child: SlideTransition(
-          position: animation.drive(Tween(begin: const Offset(1.0, 0.0), end: Offset.zero).chain(CurveTween(curve: Curves.fastEaseInToSlowEaseOut))),
+          position: animation.drive(Tween(begin: const Offset(1.0, 0.0), end: Offset.zero).chain(CurveTween(curve: Curves.easeInOut))),
           child: child,
         ),
       );

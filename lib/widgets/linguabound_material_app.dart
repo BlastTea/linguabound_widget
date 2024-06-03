@@ -53,6 +53,9 @@ class LinguaboundMaterialApp extends StatelessWidget {
           InputDecorationTheme effectiveInputDecorationTheme = const InputDecorationTheme(
             border: OutlineInputBorder(
               borderRadius: kBorderRadius,
+              borderSide: BorderSide(
+                color: kColorWhite,
+              ),
             ),
           );
 

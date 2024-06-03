@@ -36,7 +36,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Data> _data = [
+  final List<Data> _data = [
     Data(label: 'Masih Pemula', icon: Icons.signal_cellular_alt_1_bar),
     Data(label: 'Udah Jago', icon: Icons.signal_cellular_alt_2_bar),
     Data(label: 'Udah Sepuh', icon: Icons.signal_cellular_alt),
@@ -68,6 +68,12 @@ class _HomePageState extends State<HomePage> {
                   iconColor: const Color(0xFF1899D6),
                   child: Text(e.label),
                 ),
+              ),
+            ),
+            const Divider(),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Nama',
               ),
             ),
             const Divider(),

@@ -50,13 +50,21 @@ class LinguaboundMaterialApp extends StatelessWidget {
           //   ),
           // );
 
-          InputDecorationTheme effectiveInputDecorationTheme = const InputDecorationTheme(
+          InputDecorationTheme effectiveInputDecorationTheme = InputDecorationTheme(
             border: OutlineInputBorder(
               borderRadius: kBorderRadius,
               borderSide: BorderSide(
                 color: kColorWhite,
               ),
             ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: kBorderRadius,
+              borderSide: BorderSide(
+                color: kColorWhite,
+              ),
+            ),
+            floatingLabelStyle: effectiveTextTheme.bodyLarge!.copyWith(color: effectiveColorScheme.primary),
+            labelStyle: effectiveTextTheme.bodyLarge!.copyWith(color: kColorWhite),
           );
 
           DividerThemeData effectiveDividerTheme = const DividerThemeData(

@@ -14,7 +14,7 @@ dependencies:
   m_widget:
     git:
       url: https://github.com/BlastTea/MWidget.git
-      ref: 07506d0c14997d05cc1654d91076f5ad574e7458
+      ref: 6c2f04c7eaaa8ed36996421ced257a954d67a0fc
 
 dev_dependencies:
   flutter_test:

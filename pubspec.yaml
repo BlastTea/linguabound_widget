@@ -1,7 +1,7 @@
 name: linguabound_widget
 description: "A new Flutter package project."
 publish_to: 'none'
-version: 1.6.4
+version: 1.6.5
 homepage:
 
 environment:
@@ -14,7 +14,7 @@ dependencies:
   m_widget:
     git:
       url: https://github.com/BlastTea/MWidget.git
-      ref: b1191678af1bbefe4ffde909b42804708bb5ab17
+      ref: 07506d0c14997d05cc1654d91076f5ad574e7458
 
 dev_dependencies:
   flutter_test:
